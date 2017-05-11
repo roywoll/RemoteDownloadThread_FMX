@@ -1,0 +1,287 @@
+object HousePhotosForm: THousePhotosForm
+  Left = 0
+  Top = 0
+  Caption = 'Transition Viewer'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object TitleLayout: TLayout
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 43.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    object Label1: TLabel
+      Align = Client
+      Size.Width = 401.000000000000000000
+      Size.Height = 43.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'Background Loading of Remote Bitmaps'
+    end
+    object TitleLayoutRight: TLayout
+      Align = Right
+      Position.X = 294.000000000000000000
+      Size.Width = 90.000000000000000000
+      Size.Height = 39.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      object SelectButton: TButton
+        Align = VertCenter
+        CanFocus = False
+        Default = True
+        Margins.Right = 8.000000000000000000
+        Position.Y = 3.000000000000000000
+        Size.Width = 82.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Button'
+      end
+    end
+    object TitleLayoutLeft: TLayout
+      Align = Left
+      Size.Width = 73.000000000000000000
+      Size.Height = 43.000000000000000000
+      Size.PlatformDefault = False
+      object BackButton: TButton
+        Align = VertCenter
+        CanFocus = False
+        Margins.Left = 8.000000000000000000
+        Position.X = 8.000000000000000000
+        Size.Width = 65.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'backtoolbutton'
+        TabOrder = 0
+        Text = 'Back'
+        OnClick = BackButtonClick
+      end
+    end
+    object btnRefresh: TButton
+      Align = Right
+      CanFocus = False
+      Default = True
+      Margins.Right = 2.000000000000000000
+      Position.X = 594.000000000000000000
+      Size.Width = 44.000000000000000000
+      Size.Height = 43.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'refreshtoolbutton'
+      TabOrder = 0
+      Text = 'Info'
+      OnClick = btnRefreshClick
+    end
+    object cbLoadMethod: TwwComboEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Right
+      TabOrder = 1
+      Items.Strings = (
+        'Use Thread'
+        'Without Thread')
+      ItemIndex = 0
+      Text = 'Use Thread'
+      Position.X = 474.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 43.000000000000000000
+      Size.PlatformDefault = False
+      ShowMatchText = False
+      Style = wwcbsDropDownList
+      MaxInputLength = 0
+      OnClosePopup = cbLoadMethodClosePopup
+    end
+  end
+  object tcMain: TTabControl
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 437.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 0
+    TabOrder = 18
+    TabPosition = None
+    Sizes = (
+      640s
+      437s
+      640s
+      437s)
+    object tiImages: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tiImages'
+      ExplicitSize.cx = 11.000000000000000000
+      ExplicitSize.cy = 11.000000000000000000
+      object PictureContainer: TVertScrollBox
+        Align = Client
+        Size.Width = 640.000000000000000000
+        Size.Height = 437.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        OnResize = PictureContainerResize
+        OnViewportPositionChange = PictureContainerViewportPositionChange
+        Viewport.Width = 640.000000000000000000
+        Viewport.Height = 437.000000000000000000
+      end
+    end
+    object tiImage: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tiImage'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      object TemplatePictureItem: TLayout
+        HitTest = True
+        Position.X = 256.000000000000000000
+        Position.Y = 72.000000000000000000
+        Size.Width = 153.000000000000000000
+        Size.Height = 161.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object icItem: TImageControl
+          Align = Client
+          EnableOpenDialog = False
+          HitTest = False
+          Margins.Bottom = 1.000000000000000000
+          Size.Width = 153.000000000000000000
+          Size.Height = 139.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object lblLoading: TLabel
+            Align = Horizontal
+            Margins.Right = 2.000000000000000000
+            Position.Y = 80.000000000000000000
+            Size.Width = 151.000000000000000000
+            Size.Height = 21.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Center
+            Text = 'Loading...'
+          end
+        end
+        object lblRoomName: TLabel
+          Align = Bottom
+          Position.Y = 140.000000000000000000
+          Size.Width = 153.000000000000000000
+          Size.Height = 21.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Center
+          Text = 'lblRoomName'
+        end
+      end
+    end
+  end
+  object BindSourceDB12: TBindSourceDB
+    DataSet = Pictures
+    ScopeMappings = <>
+    Left = 40
+    Top = 352
+  end
+  object Pictures: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+      end
+      item
+        Name = 'Location'
+        DataType = ftString
+        Size = 20
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    FormatOptions.AssignedValues = [fvMaxBcdPrecision, fvMaxBcdScale]
+    FormatOptions.MaxBcdPrecision = 2147483647
+    FormatOptions.MaxBcdScale = 2147483647
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.LockWait = True
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 40
+    Top = 315
+    Content = {
+      414442530F0095689D040000FF00010001FF02FF030400100000004E00650077
+      005400610062006C00650005000A0000005400610062006C0065000600000000
+      00070000080032000000090000FF0AFF0B040004000000490044000500040000
+      00490044000C00010000000E000D000F00011000011100011200011300011400
+      0115000400000049004400FEFF0B0400100000004C006F006300610074006900
+      6F006E000500100000004C006F0063006100740069006F006E000C0002000000
+      0E0016001700140000000F000110000111000112000113000114000115001000
+      00004C006F0063006100740069006F006E00180014000000FEFEFF19FEFF1AFE
+      FF1BFF1C1D0000000000FF1E000001000000010003000000426172FEFEFF1C1D
+      0001000000FF1E00000200000001000400000042617468FEFEFF1C1D00020000
+      00FF1E000003000000010009000000426564726F6F6D2031FEFEFF1C1D000300
+      0000FF1E000004000000010009000000426564726F6F6D2032FEFEFF1C1D0004
+      000000FF1E000005000000010005000000426F6E7573FEFEFF1C1D0005000000
+      FF1E0000060000000100040000004465636BFEFEFF1C1D0006000000FF1E0000
+      0700000001000B00000044696E696E6720526F6F6DFEFEFF1C1D0007000000FF
+      1E00000800000001000D00000044697374616E63652056696577FEFEFF1C1D00
+      08000000FF1E00000900000001000A00000046726F6E742056696577FEFEFF1C
+      1D0009000000FF1E00000A00000001000A000000477265617420526F6F6DFEFE
+      FF1C1D000A000000FF1E00000B00000001000D00000048616C6C77617920456E
+      747279FEFEFF1C1D000B000000FF1E00000C00000001000C000000496E646F6F
+      7220456E747279FEFEFF1C1D000C000000FF1E00000D0000000100070000004B
+      69746368656EFEFEFF1C1D000D000000FF1E00000E0000000100070000004C69
+      6272617279FEFEFF1C1D000E000000FF1E00000F0000000100060000004C6976
+      696E67FEFEFF1C1D000F000000FF1E00001000000001000D0000004D61737465
+      7220426174682032FEFEFF1C1D0010000000FF1E00001100000001000F000000
+      4D6173746572204261746820547562FEFEFF1C1D0011000000FF1E0000120000
+      0001000B0000004D61737465722042617468FEFEFF1C1D0012000000FF1E0000
+      1300000001000E0000004D617374657220426564726F6F6DFEFEFF1C1D001300
+      0000FF1E0000140000000100040000004E6F6F6BFEFEFF1C1D0014000000FF1E
+      00001500000001000D0000004F7574646F6F7220456E747279FEFEFF1C1D0015
+      000000FF1E00001600000001000D0000004F7574646F6F7220506174696FFEFE
+      FF1C1D0016000000FF1E00001700000001000B000000506F6F6C205669657720
+      32FEFEFF1C1D0017000000FF1E000018000000010009000000506F6F6C205669
+      6577FEFEFF1C1D0018000000FF1E000019000000010004000000506F6F6CFEFE
+      FF1C1D0019000000FF1E00001A00000001000D00000050726F70657274792056
+      696577FEFEFF1C1D001A000000FF1E00001B00000001000D0000005369646520
+      456E7472616E6365FEFEFEFEFEFF1FFEFF2021001B000000FF22FEFEFE0E004D
+      0061006E0061006700650072001E005500700064006100740065007300520065
+      0067006900730074007200790012005400610062006C0065004C006900730074
+      000A005400610062006C00650008004E0061006D006500140053006F00750072
+      00630065004E0061006D0065000A0054006100620049004400240045006E0066
+      006F0072006300650043006F006E00730074007200610069006E00740073001E
+      004D0069006E0069006D0075006D004300610070006100630069007400790018
+      0043006800650063006B004E006F0074004E0075006C006C00140043006F006C
+      0075006D006E004C006900730074000C0043006F006C0075006D006E00100053
+      006F007500720063006500490044000E006400740049006E0074003300320010
+      0044006100740061005400790070006500140053006500610072006300680061
+      0062006C006500120041006C006C006F0077004E0075006C006C000800420061
+      007300650014004F0041006C006C006F0077004E0075006C006C0012004F0049
+      006E0055007000640061007400650010004F0049006E00570068006500720065
+      001A004F0072006900670069006E0043006F006C004E0061006D006500180064
+      00740041006E007300690053007400720069006E0067000800530069007A0065
+      00140053006F007500720063006500530069007A0065001C0043006F006E0073
+      0074007200610069006E0074004C00690073007400100056006900650077004C
+      006900730074000E0052006F0077004C00690073007400060052006F0077000A
+      0052006F0077004900440010004F0072006900670069006E0061006C00180052
+      0065006C006100740069006F006E004C006900730074001C0055007000640061
+      007400650073004A006F00750072006E0061006C001200530061007600650050
+      006F0069006E0074000E004300680061006E00670065007300}
+  end
+end
