@@ -77,22 +77,17 @@ object HousePhotosForm: THousePhotosForm
       Text = 'Info'
       OnClick = btnRefreshClick
     end
-    object cbLoadMethod: TwwComboEdit
-      Touch.InteractiveGestures = [LongTap, DoubleTap]
+    object cbLoadMethod: TComboBox
       Align = Right
-      TabOrder = 1
       Items.Strings = (
         'Use Thread'
         'Without Thread')
       ItemIndex = 0
-      Text = 'Use Thread'
       Position.X = 474.000000000000000000
       Size.Width = 120.000000000000000000
       Size.Height = 43.000000000000000000
       Size.PlatformDefault = False
-      ShowMatchText = False
-      Style = wwcbsDropDownList
-      MaxInputLength = 0
+      TabOrder = 1
       OnClosePopup = cbLoadMethodClosePopup
     end
   end
@@ -224,7 +219,7 @@ object HousePhotosForm: THousePhotosForm
     Left = 40
     Top = 315
     Content = {
-      414442530F0095689D040000FF00010001FF02FF030400100000004E00650077
+      414442530F00D75A9D040000FF00010001FF02FF030400100000004E00650077
       005400610062006C00650005000A0000005400610062006C0065000600000000
       00070000080032000000090000FF0AFF0B040004000000490044000500040000
       00490044000C00010000000E000D000F00011000011100011200011300011400

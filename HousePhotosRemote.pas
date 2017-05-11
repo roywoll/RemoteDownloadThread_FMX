@@ -58,7 +58,7 @@ uses
   FMX.Objects,
   FMX.TabControl, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.StorageBin, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FMX.Edit, FMX.wwEdit, FMX.wwComboEdit;
+  FireDAC.DApt.Intf, FMX.Edit, FMX.ListBox;
 
 type
   TImageBlock = class
@@ -90,18 +90,18 @@ type
     lblLoading: TLabel;
     tiImage: TTabItem;
     Pictures: TFDMemTable;
-    cbLoadMethod: TwwComboEdit;
+    cbLoadMethod: TComboBox;
     procedure FormShow(Sender: TObject);
     procedure PictureContainerResize(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnRefreshClick(Sender: TObject);
     procedure BackButtonClick(Sender: TObject);
     procedure PictureItemClick(Sender: TObject);
-    procedure cbLoadMethodClosePopup(Sender: TObject);
     procedure PictureContainerViewportPositionChange(Sender: TObject;
       const OldViewportPosition, NewViewportPosition: TPointF;
       const ContentSizeChanged: Boolean);
     procedure PictureItemTap(Sender: TObject; const Point: TPointF);
+    procedure cbLoadMethodClosePopup(Sender: TObject);
   private
     LoadPictureThread: TThread;
     procedure OpenDetail(imageBlock: TImageBlock);
@@ -164,7 +164,6 @@ begin
   end;
 end;
 {$endregion}
-
 
 // Download bitmap from remote server
 function DownloadStream(uri: String; var mStream: TMemoryStream): Boolean;
@@ -317,7 +316,7 @@ end;
 
 procedure THousePhotosForm.cbLoadMethodClosePopup(Sender: TObject);
 begin
-  if cbLoadMethod.Text = 'Use Thread' then
+  if cbLoadMethod.Items[cbLoadMethod.ItemIndex] = 'Use Thread' then
   begin
     StartThreadLoadVisiblePictures;
   end
@@ -327,7 +326,6 @@ begin
     LoadVisiblePictures;
   end;
   btnRefresh.OnClick(self);
-
 end;
 
 {$endregion}
@@ -349,6 +347,8 @@ begin
         DefaultWidth;
       imageBlockData.Layout.Position.Y := (curRecNo div PicturesPerRow) *
         DefaultHeight;
+      imageBlockData.LoadingControl.Position.Y :=
+        (DefaultHeight - 20 - Canvas.TextHeight('S')) / 2;
     end;
   finally
     PictureContainer.EndUpdate;
@@ -372,8 +372,8 @@ var
   curRecNo: Integer;
   component: TComponent;
 begin
-  // Create list of images in a TVertScrollBox - We'll load images in the background
-  // Use TemplatePictureItem as template for each item
+  // Create list of images in a TVertScrollBox - We'll download images in the
+  // background. Use TemplatePictureItem as template for each item
   curRecNo := 0;
   PictureContainer.BeginUpdate;
   try
@@ -382,24 +382,20 @@ begin
       imageBlockData := TImageBlock.Create; // (self);
 
       imageBlockData.ID := Pictures.FieldByName('ID').AsInteger;
-      imageBlockData.Location := Pictures.FieldByName('Location').AsString;
-      imageBlockData.Dirty := True;
       imageBlockData.Location := Pictures.FieldByName('Location').Text;
+      imageBlockData.Dirty := True;
 
       imageBlockData.Layout:= TemplatePictureItem.Clone(self) as TLayout;
       imageBlockData.Layout.Tag:= curRecNo; // For when click on item
       imageBlockData.Layout.Parent:= PictureContainer;
 
-      imageBlockData.Layout.Width := DefaultWidth - 1;
-      imageBlockData.Layout.Height := DefaultHeight - 1;
-      imageBlockData.Layout.Position.X := (curRecNo mod PicturesPerRow) *
-        DefaultWidth;
-      imageBlockData.Layout.Position.Y := (curRecNo div PicturesPerRow) *
-        DefaultHeight;
+      // Recognize user clicks on image layout item
       if wwHasTouchTracking then
         imageBlockData.Layout.OnTap:= PictureItemTap
       else
         imageBlockData.Layout.OnClick:= PictureItemClick;
+
+      // Initialize control information in imageBlock
       for component in imageBlockData.Layout do
       begin
          if (component is TLabel) and (TLabel(component).Text = 'lblRoomName') then
@@ -410,13 +406,15 @@ begin
                imageBlockData.LoadingControl:= TLabel(component)
       end;
       imageBlockData.InfoControl.Text := imageBlockData.Location;
-      imageBlockData.LoadingControl.Position.Y := (DefaultHeight - 20) / 2;
 
       ImageBlockList.Add(imageBlockData);
 
       inc(curRecNo);
       Pictures.Next;
     end;
+
+    PictureContainerResize(self);
+
   finally
     PictureContainer.EndUpdate;
   end;
@@ -428,7 +426,6 @@ begin
 
 end;
 
-// Refetch from server
 procedure THousePhotosForm.BackButtonClick(Sender: TObject);
 begin
   if tcMain.ActiveTab <> tiImages then
@@ -439,6 +436,7 @@ begin
   end
 end;
 
+// Refetch from server
 // Clears all the bitmaps so that they must be redownloaded
 procedure THousePhotosForm.btnRefreshClick(Sender: TObject);
 var imageBlock : TImageBlock;

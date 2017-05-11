@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2016/05/19 15:49:48.000.529,C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\HousePhotos.pas=C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\MainDemo\HousePhotos.pas</Transaction>
-    <Transaction>2016/05/19 15:49:48.000.529,C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\HousePhotos.fmx=C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\MainDemo\HousePhotos.fmx</Transaction>
-    <Transaction>2016/05/19 15:50:14.000.604,C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\PHousePhotosRemote.fmx=C:\Users\roywoll\Documents\Embarcadero\Studio\Projects\Unit29.fmx</Transaction>
-    <Transaction>2016/05/19 15:50:51.000.551,C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\PrjHousePhotosRemote.dproj=C:\Users\roywoll\Documents\Embarcadero\Studio\Projects\Project46.dproj</Transaction>
+    <Transaction>2016/05/19 15:49:48.000.529,C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\MainDemo\HousePhotos.pas=C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\HousePhotos.pas</Transaction>
+    <Transaction>2016/05/19 15:49:48.000.529,C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\MainDemo\HousePhotos.fmx=C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\HousePhotos.fmx</Transaction>
+    <Transaction>2016/05/19 15:50:14.000.604,C:\Users\roywoll\Documents\Embarcadero\Studio\Projects\Unit29.fmx=C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\PHousePhotosRemote.fmx</Transaction>
+    <Transaction>2016/05/19 15:50:51.000.551,C:\Users\roywoll\Documents\Embarcadero\Studio\Projects\Project46.dproj=C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\PrjHousePhotosRemote.dproj</Transaction>
     <Transaction>2016/05/19 15:51:17.000.618,C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\PrjHousePhotosRemote.dproj=C:\Users\roywoll\Documents\woll2woll\firepower7\demos\18.0\HousePhotosRemote\PrjHousePhotosRemote.dproj</Transaction>
   </Transactions>
 	<ActiveMobileDevice>

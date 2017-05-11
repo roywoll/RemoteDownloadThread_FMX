@@ -1,0 +1,12 @@
+*.dcu
+*.o
+*.stat
+*.dSYM
+Android/
+iOSDevice64/
+iOSDevice32/
+OSX32/
+Win32/
+Win64/
+iOSSimulator/
+__history/
