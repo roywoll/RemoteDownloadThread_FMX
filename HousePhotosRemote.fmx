@@ -18,7 +18,7 @@ object HousePhotosForm: THousePhotosForm
     TabOrder = 8
     object Label1: TLabel
       Align = Client
-      Size.Width = 401.000000000000000000
+      Size.Width = 377.000000000000000000
       Size.Height = 43.000000000000000000
       Size.PlatformDefault = False
       TextSettings.HorzAlign = Center
@@ -54,8 +54,9 @@ object HousePhotosForm: THousePhotosForm
         CanFocus = False
         Margins.Left = 8.000000000000000000
         Position.X = 8.000000000000000000
+        Position.Y = -2.000000000000000000
         Size.Width = 65.000000000000000000
-        Size.Height = 44.000000000000000000
+        Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'backtoolbutton'
         TabOrder = 0
@@ -68,8 +69,8 @@ object HousePhotosForm: THousePhotosForm
       CanFocus = False
       Default = True
       Margins.Right = 2.000000000000000000
-      Position.X = 594.000000000000000000
-      Size.Width = 44.000000000000000000
+      Position.X = 590.000000000000000000
+      Size.Width = 48.000000000000000000
       Size.Height = 43.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'refreshtoolbutton'
@@ -83,8 +84,8 @@ object HousePhotosForm: THousePhotosForm
         'Use Thread'
         'Without Thread')
       ItemIndex = 0
-      Position.X = 474.000000000000000000
-      Size.Width = 120.000000000000000000
+      Position.X = 450.000000000000000000
+      Size.Width = 140.000000000000000000
       Size.Height = 43.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
@@ -219,7 +220,7 @@ object HousePhotosForm: THousePhotosForm
     Left = 40
     Top = 315
     Content = {
-      414442530F00D75A9D040000FF00010001FF02FF030400100000004E00650077
+      414442530F002B5B9D040000FF00010001FF02FF030400100000004E00650077
       005400610062006C00650005000A0000005400610062006C0065000600000000
       00070000080032000000090000FF0AFF0B040004000000490044000500040000
       00490044000C00010000000E000D000F00011000011100011200011300011400
